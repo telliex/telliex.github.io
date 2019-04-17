@@ -1,0 +1,23 @@
+{
+  "name": "felab",
+  "version": "1.0.0",
+  "description": "front end lab",
+  "main": "service-worker.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/telliex/telliex.github.io.git"
+  },
+  "keywords": [
+    "personal",
+    "space"
+  ],
+  "author": "Telliex",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/telliex/telliex.github.io/issues"
+  },
+  "homepage": "https://github.com/telliex/telliex.github.io#readme"
+}

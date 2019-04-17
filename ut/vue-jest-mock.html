@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>jest.fn() | 前端学习</title>
+    <meta name="description" content="工作流">
+    <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/img/logo.png">
+    
+    <link rel="preload" href="/assets/css/0.styles.704afe9d.css" as="style"><link rel="preload" href="/assets/js/app.f34992e5.js" as="script"><link rel="preload" href="/assets/js/19.99142489.js" as="script"><link rel="prefetch" href="/assets/js/10.05a35ce7.js"><link rel="prefetch" href="/assets/js/11.60292d1a.js"><link rel="prefetch" href="/assets/js/12.accdc152.js"><link rel="prefetch" href="/assets/js/13.25c0f1fe.js"><link rel="prefetch" href="/assets/js/14.4317721c.js"><link rel="prefetch" href="/assets/js/15.937da29b.js"><link rel="prefetch" href="/assets/js/16.8d0e5c2e.js"><link rel="prefetch" href="/assets/js/17.42a648cd.js"><link rel="prefetch" href="/assets/js/18.b3fa4ccb.js"><link rel="prefetch" href="/assets/js/2.938831bb.js"><link rel="prefetch" href="/assets/js/20.fe850fd0.js"><link rel="prefetch" href="/assets/js/21.55723c2f.js"><link rel="prefetch" href="/assets/js/22.8a5115d2.js"><link rel="prefetch" href="/assets/js/23.49cb64ec.js"><link rel="prefetch" href="/assets/js/3.4c4a8731.js"><link rel="prefetch" href="/assets/js/4.069f570c.js"><link rel="prefetch" href="/assets/js/5.7a5b8e8c.js"><link rel="prefetch" href="/assets/js/6.f15aaf75.js"><link rel="prefetch" href="/assets/js/7.39aa06ff.js"><link rel="prefetch" href="/assets/js/8.9434947c.js"><link rel="prefetch" href="/assets/js/9.cb121335.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.704afe9d.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">前端学习</span></a> <div class="links" style="max-width:nullpx;"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><a href="http://confluence.shinho.net.cn/pages/viewpage.action?pageId=17127648" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Activo
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <a href="https://github.com/telliex/telliex.github.io" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <div class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">Home</a></div><div class="nav-item"><a href="http://confluence.shinho.net.cn/pages/viewpage.action?pageId=17127648" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  Activo
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></div> <a href="https://github.com/telliex/telliex.github.io" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><a href="/intro/" class="sidebar-link">导言</a></li><li><a href="/user-story/" class="sidebar-link">使用者故事</a></li><li><div class="sidebar-group"><p class="sidebar-heading open"><span>单元测试</span> <!----></p> <ul class="sidebar-group-items"><li><a href="/ut/" class="sidebar-link">单元测试</a></li><li><a href="/ut/ut-vue.html" class="sidebar-link">Vue 单元测试</a></li><li><a href="/ut/jest.html" class="sidebar-link">Jest</a></li><li><a href="/ut/vue-jest-callback-functions.html" class="sidebar-link">异步调用</a></li><li><a href="/ut/vue-jest-mock.html" class="active sidebar-link">mock</a></li><li><a href="/ut/vue-jest-template1.html" class="sidebar-link">Jest 实战范例1</a></li><li><a href="/ut/vue-jest-template2.html" class="sidebar-link">Jest 实战范例2</a></li><li><a href="/ut/vue-jest-tools.html" class="sidebar-link">工具</a></li></ul></div></li><li><div class="sidebar-group"><p class="sidebar-heading"><span>BDD 测试</span> <!----></p> <ul class="sidebar-group-items"><li><a href="/vue-bdd-test/" class="sidebar-link">Vue BDD 测试</a></li><li><a href="/vue-bdd-test/bdd-report.html" class="sidebar-link">bdd report</a></li></ul></div></li><li><a href="/performance/" class="sidebar-link">性能测试</a></li></ul> </div> <div class="page"> <div class="content"><p>以上断言基本是用在测试同步函数的返回值，异步就利用 Jest 的 mock  来进行测试。
+Jest 中的三个与 Mock 函数相关的API，<code>jest.fn()</code>、<code>jest.spyOn()</code>、<code>jest.mock()</code></p> <h4 id="jest-fn"><a href="#jest-fn" aria-hidden="true" class="header-anchor">#</a> jest.fn()</h4> <p>▶ 不定义函数内部的实现，jest.fn() 会返回 undefined 作为返回值。</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'测试 jest.fn() 调用'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> mockFn <span class="token operator">=</span> jest<span class="token punctuation">.</span><span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> result <span class="token operator">=</span> <span class="token function">mockFn</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// 断言 mockFn 的执行后返回 undefined</span>
+  <span class="token function">expect</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBeUndefined</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// 断言 mockFn 被调用</span>
+  <span class="token function">expect</span><span class="token punctuation">(</span>mockFn<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBeCalled</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// 断言 mockFn 被调用了一次</span>
+  <span class="token function">expect</span><span class="token punctuation">(</span>mockFn<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBeCalledTimes</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// 断言 mockFn 传入的参数为1, 2, 3</span>
+  <span class="token function">expect</span><span class="token punctuation">(</span>mockFn<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toHaveBeenCalledWith</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token keyword">function</span> <span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">items<span class="token punctuation">,</span> callback</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> index <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> index <span class="token operator">&lt;</span> items<span class="token punctuation">.</span>length<span class="token punctuation">;</span> index<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+   <span class="token function">callback</span><span class="token punctuation">(</span>items<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> mockCallback <span class="token operator">=</span> jest<span class="token punctuation">.</span><span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> mockCallback<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 判断是否被执行两次</span>
+<span class="token function">expect</span><span class="token punctuation">(</span>mockCallback<span class="token punctuation">.</span>mock<span class="token punctuation">.</span>calls<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBe</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 判断函数被首次执行的第一个形参为0</span>
+<span class="token function">expect</span><span class="token punctuation">(</span>mockCallback<span class="token punctuation">.</span>mock<span class="token punctuation">.</span>calls<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBe</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 判断函数第二次被执行的第一个形参为1</span>
+<span class="token function">expect</span><span class="token punctuation">(</span>mockCallback<span class="token punctuation">.</span>mock<span class="token punctuation">.</span>calls<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBe</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>▶ jest.fn()  定义函数</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'测试 jest.fn() 返回固定值'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> mockFn <span class="token operator">=</span> jest<span class="token punctuation">.</span><span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">mockReturnValue</span><span class="token punctuation">(</span><span class="token string">'default'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// 断言 mockFn 执行后返回值为 default</span>
+  <span class="token function">expect</span><span class="token punctuation">(</span><span class="token function">mockFn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBe</span><span class="token punctuation">(</span><span class="token string">'default'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'测试 jest.fn() 内部实现'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> mockFn <span class="token operator">=</span> jest<span class="token punctuation">.</span><span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">num1<span class="token punctuation">,</span> num2</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> num1 <span class="token operator">*</span> num2<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token comment">// 断言 mockFn 执行后返回 100</span>
+  <span class="token function">expect</span><span class="token punctuation">(</span><span class="token function">mockFn</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBe</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'测试 jest.fn() 返回 Promise'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">let</span> mockFn <span class="token operator">=</span> jest<span class="token punctuation">.</span><span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">mockResolvedValue</span><span class="token punctuation">(</span><span class="token string">'default'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> result <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token function">mockFn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// 断言 mockFn 通过 await 关键字执行后返回值为default</span>
+  <span class="token function">expect</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBe</span><span class="token punctuation">(</span><span class="token string">'default'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment">// 断言 mockFn 调用后返回的是 Promise 对象</span>
+  <span class="token function">expect</span><span class="token punctuation">(</span><span class="token class-name">Object</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">.</span><span class="token function">call</span><span class="token punctuation">(</span><span class="token function">mockFn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBe</span><span class="token punctuation">(</span><span class="token string">&quot;[object Promise]&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><p>实际应用</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// fetch.js</span>
+
+<span class="token keyword">import</span> axios <span class="token keyword">from</span> <span class="token string">'axios'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token keyword">async</span> <span class="token function">fetchPostsList</span><span class="token punctuation">(</span><span class="token parameter">callback</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> axios<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'https://jsonplaceholder.typicode.com/posts'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token function">callback</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// xxx.test.js</span>
+<span class="token keyword">import</span> fetch <span class="token keyword">from</span> <span class="token string">'../src/fetch.js'</span>
+
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'fetchPostsList 中的回调函数应该能够被调用'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  expect<span class="token punctuation">.</span><span class="token function">assertions</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">let</span> mockFn <span class="token operator">=</span> jest<span class="token punctuation">.</span><span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">await</span> fetch<span class="token punctuation">.</span><span class="token function">fetchPostsList</span><span class="token punctuation">(</span>mockFn<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token comment">// 断言 mockFn 被调用</span>
+  <span class="token function">expect</span><span class="token punctuation">(</span>mockFn<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBeCalled</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre></div><h4 id="jest-mock"><a href="#jest-mock" aria-hidden="true" class="header-anchor">#</a> jest.mock()</h4> <p>events.js 引用同级下的  fetch.js</p> <div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// fetch.js</span>
+
+<span class="token keyword">import</span> axios <span class="token keyword">from</span> <span class="token string">'axios'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token keyword">async</span> <span class="token function">fetchPostsList</span><span class="token punctuation">(</span><span class="token parameter">callback</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> axios<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'https://jsonplaceholder.typicode.com/posts'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">res</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      <span class="token keyword">return</span> <span class="token function">callback</span><span class="token punctuation">(</span>res<span class="token punctuation">.</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// events.js</span>
+
+<span class="token keyword">import</span> fetch <span class="token keyword">from</span> <span class="token string">'./fetch'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">{</span>
+  <span class="token keyword">async</span> <span class="token function">getPostList</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> fetch<span class="token punctuation">.</span><span class="token function">fetchPostsList</span><span class="token punctuation">(</span><span class="token parameter">data</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'fetchPostsList be called!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment">// do something</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre></div><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// functions.test.js</span>
+
+<span class="token keyword">import</span> events <span class="token keyword">from</span> <span class="token string">'../src/events'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> fetch <span class="token keyword">from</span> <span class="token string">'../src/fetch'</span><span class="token punctuation">;</span>
+
+jest<span class="token punctuation">.</span><span class="token function">mock</span><span class="token punctuation">(</span><span class="token string">'../src/fetch.js'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'mock 整个 fetch.js 模块'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  expect<span class="token punctuation">.</span><span class="token function">assertions</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">await</span> events<span class="token punctuation">.</span><span class="token function">getPostList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">expect</span><span class="token punctuation">(</span>fetch<span class="token punctuation">.</span>fetchPostsList<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toHaveBeenCalled</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">expect</span><span class="token punctuation">(</span>fetch<span class="token punctuation">.</span>fetchPostsList<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toHaveBeenCalledTimes</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>调用了expect.assertions(2)，它能确保在异步的测试用例中，有一个断言会在回调函数中被执行。</p> <h4 id="jest-spyon"><a href="#jest-spyon" aria-hidden="true" class="header-anchor">#</a> jest.spyOn()</h4> <div class="language- extra-class"><pre class="language-text"><code>// functions.test.js
+
+import events from '../src/events';
+import fetch from '../src/fetch';
+
+test('使用jest.spyOn()监控fetch.fetchPostsList被正常调用', async() =&gt; {
+  expect.assertions(2);
+  const spyFn = jest.spyOn(fetch, 'fetchPostsList');
+  await events.getPostList();
+  expect(spyFn).toHaveBeenCalled();
+  expect(spyFn).toHaveBeenCalledTimes(1);
+})
+</code></pre></div><p>说明：通过 jest.spyOn()，fetchPostsList 被正常的执行了（可印出 fetchPostsList 的 console）。</p> <hr> <p><code>jest.fn()</code> 常被用来进行某些有回调函数的测试；<code>jest.mock()</code> 可以 mock 整个模块中的方法，当某个模块已经被单元测试 100% 覆盖时，使用 <code>jest.mock()</code> 去 mock 该模块，节约测试时间和测试的冗余度是十分必要；当需要测试某些必须被完整执行的方法时，常常需要使用 <code>jest.spyOn()</code></p> <hr> <h3 id="mock-实例"><a href="#mock-实例" aria-hidden="true" class="header-anchor">#</a> mock 实例</h3> <p>1.组件发起了API 请求，我只想知道它发没发，不想让它真实发出去。</p> <div class="language- extra-class"><pre class="language-text"><code>// 组件 ./src/components/user-info/user-info.vue
+&lt;template&gt;
+  &lt;div class=&quot;user-info&quot;&gt;
+    &lt;div class=&quot;name&quot;&gt;{{user.name}}&lt;/div&gt;
+    &lt;div class=&quot;desc&quot;&gt;{{user.desc}}&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+
+import UserApi from '../../apis/user';
+
+export default {
+  name: 'UserInfo',
+  data() {
+    return {
+      user: {},
+    };
+  },
+  created() {
+    UserApi.getUserInfo()
+      .then((user) =&gt; {
+        this.user = user;
+      });
+  },
+};
+&lt;/script&gt;
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>// API 接口 ./src/apis/user.js
+function getUserInfo() {
+  return $http.get('/user');
+}
+
+export default {
+  getUserInfo,
+};
+</code></pre></div><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// 单测 ./src/components/user-info/user-info.spec.js</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> shallowMount <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@vue/test-utils'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> UserInfo <span class="token keyword">from</span> <span class="token string">'./user-info'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> UserApi <span class="token keyword">from</span> <span class="token string">'../../apis/user'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// mock 掉 user 模块</span>
+jest<span class="token punctuation">.</span><span class="token function">mock</span><span class="token punctuation">(</span><span class="token string">'../../apis/user'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 指定 getUserInfo 方法返回假数据</span>
+UserApi<span class="token punctuation">.</span>getUserInfo<span class="token punctuation">.</span><span class="token function">mockResolvedValue</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  name<span class="token punctuation">:</span> <span class="token string">'olive'</span><span class="token punctuation">,</span>
+  desc<span class="token punctuation">:</span> <span class="token string">'software engineer'</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">describe</span><span class="token punctuation">(</span><span class="token string">'&lt;user-info/&gt;'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> wrapper <span class="token operator">=</span> <span class="token function">shallowMount</span><span class="token punctuation">(</span>UserInfo<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">test</span><span class="token punctuation">(</span><span class="token string">'getUserInfo 有且只 call 了一次'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token function">expect</span><span class="token punctuation">(</span>UserApi<span class="token punctuation">.</span>getUserInfo<span class="token punctuation">.</span>mock<span class="token punctuation">.</span>calls<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBe</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">it</span><span class="token punctuation">(</span><span class="token string">'用户信息渲染正确'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token function">expect</span><span class="token punctuation">(</span>wrapper<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'.name'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toEqual</span><span class="token punctuation">(</span><span class="token string">'olive'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">expect</span><span class="token punctuation">(</span>wrapper<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'.desc'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toEqual</span><span class="token punctuation">(</span><span class="token string">'software engineer'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><p>2.简单的 A 组件依赖了一个复杂的 B 组件，但是我只想测试 A 的逻辑，不想拉起 B 的逻辑。</p> <div class="language- extra-class"><pre class="language-text"><code>// ./src/components/simple/simple.vue
+&lt;template&gt;
+  &lt;div&gt;
+    &lt;div class=&quot;header&quot;&gt;{{msg}}&lt;/div&gt;
+    &lt;div&gt;
+      &lt;complex&gt;&lt;/complex&gt;
+      // 即使 vue-test-util 可以通过存根的方式将这个组件渲染为 complex-stub
+      // 但其内部的其他代码可能依然被执行
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+
+import Complex from './children/complex';
+
+export default {
+  name: 'Simple',
+  data() {
+    return {
+      msg: 'simple',
+    };
+  },
+  components: {
+    Complex,
+  },
+};
+
+&lt;/script&gt;
+</code></pre></div><div class="language-javascript extra-class"><pre class="language-javascript"><code><span class="token comment">// ./src/components/simple/simple.spec.js</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span> shallowMount <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@vue/test-utils'</span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> Simple <span class="token keyword">from</span> <span class="token string">'./simple'</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 拦截掉 .vue 文件的内容</span>
+jest<span class="token punctuation">.</span><span class="token function">mock</span><span class="token punctuation">(</span><span class="token string">'./children/complex.vue'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+  <span class="token function">render</span><span class="token punctuation">(</span><span class="token parameter">h</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">h</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">describe</span><span class="token punctuation">(</span><span class="token string">'&lt;simple/&gt;'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> wrapper <span class="token operator">=</span> <span class="token function">shallowMount</span><span class="token punctuation">(</span>Simple<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    stubs<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'user-info'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token function">it</span><span class="token punctuation">(</span><span class="token string">'文本渲染正确'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token function">expect</span><span class="token punctuation">(</span>wrapper<span class="token punctuation">.</span><span class="token function">find</span><span class="token punctuation">(</span><span class="token string">'.header'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toEqual</span><span class="token punctuation">(</span><span class="token string">'simple'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div><h3 id="mock-文件和-css-module-的问题"><a href="#mock-文件和-css-module-的问题" aria-hidden="true" class="header-anchor">#</a> mock 文件和 css module 的问题</h3> <p>js文件中引用了css或者本地其他文件，那么就可能测试失败。</p> <p>在 moduleNameMapper 加入以下設定</p> <div class="language- extra-class"><pre class="language-text"><code>&quot;jest&quot;: {
+    &quot;moduleNameMapper&quot;: {
+     &quot;\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$&quot;: &quot;&lt;rootDir&gt;/test/config/fileMock.js&quot;,
+     &quot;\\.(css|less)$&quot;: &quot;identity-obj-proxy&quot;
+ }
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>// fileMock.js 内容
+module.exports = 'test-file-stub';
+</code></pre></div><div class="language- extra-class"><pre class="language-text"><code>npm install --save-dev identity-obj-proxy
+</code></pre></div></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+        ←
+        <a href="/ut/vue-jest-callback-functions.html" class="prev">
+          异步调用
+        </a></span> <span class="next"><a href="/ut/vue-jest-template1.html">
+          Jest 实战范例1
+        </a>
+        →
+      </span></p></div> </div> <!----></div></div>
+    <script src="/assets/js/app.f34992e5.js" defer></script><script src="/assets/js/19.99142489.js" defer></script>
+  </body>
+</html>
